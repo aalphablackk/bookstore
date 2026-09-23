@@ -1,0 +1,27 @@
+<form
+    method="get"
+    action="{% url 'books:book_list' %}"
+    class="d-flex"
+    role="search"
+>
+    <div class="input-group">
+
+        <input
+            type="search"
+            name="q"
+            value="{{ request.GET.q|default:'' }}"
+            class="form-control"
+            placeholder="Search books..."
+            aria-label="Search books"
+        >
+
+        <button
+            class="btn btn-dark"
+            type="submit"
+            aria-label="Search"
+        >
+            <i class="bi bi-search"></i>
+        </button>
+
+    </div>
+</form>

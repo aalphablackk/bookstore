@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ category.name }} | BookNest
+{% endblock %}
+
+{% block content %}
+
+<section class="booknest-section booknest-section-soft">
+    <div class="container">
+
+        {% include "includes/breadcrumb.html" %}
+
+
+        <!-- Category header -->
+        <div class="row align-items-center g-4 mb-5">
+
+            {% if category.image %}
+                <div class="col-12 col-md-4 col-lg-3">
+
+                    <div class="booknest-category-hero-image">
+                        <img
+                            src="{{ category.image.url }}"
+                            alt="{{ category.name }}"
+                            class="w-100 h-100"
+                        >
+                    </div>
+
+                </div>
+            {% endif %}
+
+
+            <div
+                class="
+                    {% if category.image %}
+                        col-12 col-md-8 col-lg-9
+                    {% else %}
+                        col-12
+                    {% endif %}
+                "
+            >
+
+                <div class="booknest-section-label mb-2">
+                    Book category
+                </div>
+
+                <h1 class="booknest-section-title display-5 mb-3">
+                    {{ category.name }}
+                </h1>
+
+                {% if category.description %}
+                    <p class="text-muted mb-3">
+                        {{ category.description }}
+                    </p>
+                {% else %}
+                    <p class="text-muted mb-3">
+                        Explore books in the {{ category.name }}
+                        collection.
+                    </p>
+                {% endif %}
+
+                <div class="text-muted">
+                    {{ books|length }}
+                    book{{ books|length|pluralize }}
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Books -->
+        {% if books %}
+
+            <div class="d-flex justify-content-between
+            align-items-center mb-4">
+
+                <div>
+                    <div class="booknest-section-label mb-1">
+                        Collection
+                    </div>
+
+                    <h2 class="booknest-section-title h3 mb-0">
+                        Books in {{ category.name }}
+                    </h2>
+                </div>
+
+                <a
+                    href="{% url 'books:book_list' %}"
+                    class="btn btn-booknest-outline btn-sm"
+                >
+                    View All Books
+                    <i class="bi bi-arrow-right ms-1"></i>
+                </a>
+
+            </div>
+
+
+            <div class="row g-4">
+
+                {% for book in books %}
+
+                    <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+
+                        {% include "includes/book_card.html" %}
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <!-- Empty state -->
+            <div class="text-center py-5">
+
+                <div class="mb-3">
+                    <i
+                        class="bi bi-book display-3 text-muted"
+                    ></i>
+                </div>
+
+                <h4 class="fw-bold">
+                    No books in this category yet
+                </h4>
+
+                <p class="text-muted mb-4">
+                    Check out our other collections.
+                </p>
+
+                <a
+                    href="{% url 'books:book_list' %}"
+                    class="btn btn-booknest"
+                >
+                    Explore All Books
+                </a>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+</section>
+
+{% endblock %}

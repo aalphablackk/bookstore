@@ -1,0 +1,533 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    BookNest | Big Stories for Little Readers
+{% endblock %}
+
+{% block content %}
+
+<!-- =====================================================
+     HERO
+     ===================================================== -->
+
+<section class="booknest-hero">
+
+    <div class="container">
+
+        <div class="row align-items-center g-0">
+
+            <!-- Hero copy -->
+            <div class="col-lg-6">
+
+                <div class="booknest-hero-content">
+
+                    <div class="booknest-eyebrow mb-3">
+                        Big stories for little readers
+                    </div>
+
+                    <h1 class="booknest-hero-title mb-4">
+                        Find Their Next
+                        <span class="highlight d-block">
+                            Favorite Story
+                        </span>
+                    </h1>
+
+                    <p class="booknest-hero-text mb-4">
+                        Discover a world of adventure, imagination
+                        and learning with books for every curious
+                        young mind.
+                    </p>
+
+
+                    <div class="d-flex flex-wrap gap-3 mb-5">
+
+                        <a
+                            href="{% url 'books:book_list' %}"
+                            class="btn btn-booknest btn-lg"
+                        >
+                            Explore Books
+                            <i class="bi bi-arrow-right ms-2"></i>
+                        </a>
+
+                        <a
+                            href="{% url 'books:category_list' %}"
+                            class="btn btn-booknest-outline btn-lg"
+                        >
+                            Browse Categories
+                        </a>
+
+                    </div>
+
+
+                    <!-- Trust points -->
+                    <div class="row g-3">
+
+                        <div class="col-12 col-sm-4">
+
+                            <div class="booknest-trust-item">
+
+                                <span class="booknest-trust-icon">
+                                    <i class="bi bi-book"></i>
+                                </span>
+
+                                <span>
+                                    Age-appropriate
+                                    selections
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-12 col-sm-4">
+
+                            <div class="booknest-trust-item">
+
+                                <span class="booknest-trust-icon">
+                                    <i class="bi bi-heart"></i>
+                                </span>
+
+                                <span>
+                                    Trusted by
+                                    parents
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-12 col-sm-4">
+
+                            <div class="booknest-trust-item">
+
+                                <span class="booknest-trust-icon">
+                                    <i class="bi bi-truck"></i>
+                                </span>
+
+                                <span>
+                                    Fast & reliable
+                                    delivery
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Hero visual -->
+            <div class="col-lg-6 align-self-stretch">
+
+                <div class="booknest-hero-visual">
+
+                    <img
+                        src="{% static 'images/hero/hero-reading.jpg' %}"
+                        alt="Young reader enjoying a children's book"
+                        class="booknest-hero-image"
+                    >
+
+                    <div class="booknest-hero-decoration booknest-star-one">
+                        ✦
+                    </div>
+
+                    <div class="booknest-hero-decoration booknest-star-two">
+                        ✦
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CATEGORIES
+     ===================================================== -->
+
+<section class="booknest-section">
+
+    <div class="container">
+
+        <div class="d-flex flex-column flex-md-row
+                    justify-content-between
+                    align-items-md-end
+                    gap-3 mb-5">
+
+            <div>
+                <div class="booknest-section-label mb-2">
+                    Explore by category
+                </div>
+
+                <h2 class="booknest-section-title display-6 mb-2">
+                    Discover Our Collections
+                </h2>
+
+                <p class="booknest-section-description mb-0">
+                    From exciting adventures to early learning,
+                    find the perfect books for every stage of
+                    your child's journey.
+                </p>
+            </div>
+
+            <a
+                href="{% url 'books:category_list' %}"
+                class="fw-semibold text-decoration-none"
+            >
+                View All Categories
+                <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            {% for category in categories|slice:":6" %}
+
+                <div class="col-12 col-sm-6 col-lg-4 col-xl-2">
+
+                    {% include "includes/category_card.html" %}
+
+                </div>
+
+            {% empty %}
+
+                <div class="col-12">
+                    <p class="text-muted text-center">
+                        Categories will appear here soon.
+                    </p>
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     FEATURED BOOKS
+     ===================================================== -->
+
+<section class="booknest-section booknest-section-soft">
+
+    <div class="container">
+
+        <div class="d-flex flex-column flex-md-row
+                    justify-content-between
+                    align-items-md-end
+                    gap-3 mb-5">
+
+            <div>
+
+                <div class="booknest-section-label mb-2">
+                    Popular picks
+                </div>
+
+                <h2 class="booknest-section-title display-6 mb-2">
+                    Featured Books
+                </h2>
+
+                <p class="booknest-section-description mb-0">
+                    Handpicked stories that young readers
+                    will love.
+                </p>
+
+            </div>
+
+            <a
+                href="{% url 'books:book_list' %}"
+                class="fw-semibold text-decoration-none"
+            >
+                View All Books
+                <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+
+        </div>
+
+
+        {% if featured_books %}
+
+            <div class="row g-4">
+
+                {% for book in featured_books %}
+
+                    <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+
+                        {% include "includes/book_card.html" %}
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <div class="text-center py-5">
+
+                <i class="bi bi-book display-4 text-muted"></i>
+
+                <p class="text-muted mt-3 mb-0">
+                    Featured books will appear here soon.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     READING PROMO
+     ===================================================== -->
+
+<section class="booknest-section">
+
+    <div class="container">
+
+        <div class="booknest-promo">
+
+            <div class="row align-items-center g-4">
+
+                <div class="col-lg-7">
+
+                    <span class="booknest-promo-label">
+                        Make reading part of every day
+                    </span>
+
+                    <h2 class="booknest-promo-title">
+                        Every story opens
+                        a new little world.
+                    </h2>
+
+                    <p class="booknest-promo-text">
+                        From bedtime adventures to exciting
+                        educational discoveries, give young
+                        readers stories they'll remember.
+                    </p>
+
+                    <a
+                        href="{% url 'books:book_list' %}"
+                        class="btn btn-light btn-lg px-4"
+                    >
+                        Find a Book
+                        <i class="bi bi-arrow-right ms-2"></i>
+                    </a>
+
+                </div>
+
+
+                <div class="col-lg-5">
+
+                    <div class="booknest-promo-visual">
+
+                        <i class="bi bi-stars"></i>
+
+                        <div class="booknest-promo-book">
+                            <i class="bi bi-book-half"></i>
+                        </div>
+
+                        <i class="bi bi-cloud"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     BENEFITS
+     ===================================================== -->
+
+<section class="booknest-section booknest-section-soft">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <div class="booknest-section-label mb-2">
+                Why BookNest
+            </div>
+
+            <h2 class="booknest-section-title display-6 mb-3">
+                More Than Just a Bookstore
+            </h2>
+
+            <p class="booknest-section-description mx-auto"
+               style="max-width: 650px;">
+                We're here to make discovering and buying
+                children's books simple, enjoyable and meaningful.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <!-- Benefit 1 -->
+            <div class="col-12 col-md-6 col-lg-3">
+
+                <div class="booknest-benefit-card">
+
+                    <div class="booknest-benefit-icon
+                                booknest-benefit-orange">
+                        <i class="bi bi-stars"></i>
+                    </div>
+
+                    <h5 class="fw-bold">
+                        Curated Selection
+                    </h5>
+
+                    <p class="text-muted small mb-0">
+                        Discover books chosen to encourage
+                        curiosity, creativity and learning.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Benefit 2 -->
+            <div class="col-12 col-md-6 col-lg-3">
+
+                <div class="booknest-benefit-card">
+
+                    <div class="booknest-benefit-icon
+                                booknest-benefit-green">
+                        <i class="bi bi-heart"></i>
+                    </div>
+
+                    <h5 class="fw-bold">
+                        Made for Young Readers
+                    </h5>
+
+                    <p class="text-muted small mb-0">
+                        Find age-appropriate stories for
+                        different interests and reading stages.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Benefit 3 -->
+            <div class="col-12 col-md-6 col-lg-3">
+
+                <div class="booknest-benefit-card">
+
+                    <div class="booknest-benefit-icon
+                                booknest-benefit-blue">
+                        <i class="bi bi-shield-check"></i>
+                    </div>
+
+                    <h5 class="fw-bold">
+                        Safe & Secure
+                    </h5>
+
+                    <p class="text-muted small mb-0">
+                        Shop with confidence through a secure
+                        and reliable buying experience.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Benefit 4 -->
+            <div class="col-12 col-md-6 col-lg-3">
+
+                <div class="booknest-benefit-card">
+
+                    <div class="booknest-benefit-icon
+                                booknest-benefit-purple">
+                        <i class="bi bi-shop"></i>
+                    </div>
+
+                    <h5 class="fw-bold">
+                        Support Sellers
+                    </h5>
+
+                    <p class="text-muted small mb-0">
+                        Discover books from different sellers
+                        through one convenient marketplace.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FINAL CTA
+     ===================================================== -->
+
+<section class="booknest-section">
+
+    <div class="container">
+
+        <div class="booknest-final-cta text-center">
+
+            <div class="booknest-section-label mb-2">
+                Start exploring
+            </div>
+
+            <h2 class="booknest-section-title display-6 mb-3">
+                Their next favorite book
+                might be one click away.
+            </h2>
+
+            <p class="booknest-section-description mx-auto mb-4"
+               style="max-width: 600px;">
+                Explore our collection and discover stories
+                they'll want to read again and again.
+            </p>
+
+            <a
+                href="{% url 'books:book_list' %}"
+                class="btn btn-booknest btn-lg px-5"
+            >
+                Explore All Books
+                <i class="bi bi-arrow-right ms-2"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

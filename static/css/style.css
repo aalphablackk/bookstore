@@ -1,0 +1,1057 @@
+/* =========================================================
+   BOOKNEST DESIGN SYSTEM
+   ========================================================= */
+
+:root {
+    --booknest-navy: #102a43;
+    --booknest-orange: #f26b21;
+    --booknest-orange-light: #fff1e8;
+    --booknest-cream: #fffaf3;
+    --booknest-yellow: #fff4cf;
+    --booknest-green: #e8f5e9;
+    --booknest-blue: #eaf4fb;
+    --booknest-pink: #fcecf1;
+    --booknest-purple: #f1ecfa;
+    --booknest-text: #243b53;
+    --booknest-muted: #627d98;
+    --booknest-border: #e6e9ed;
+}
+
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+body {
+    color: var(--booknest-text);
+    background: #ffffff;
+}
+
+a {
+    color: inherit;
+}
+
+.booknest-section {
+    padding: 80px 0;
+}
+
+.booknest-section-soft {
+    background: var(--booknest-cream);
+}
+
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.booknest-navbar {
+    background: #ffffff;
+    border-bottom: 1px solid var(--booknest-border);
+}
+
+.booknest-brand {
+    color: var(--booknest-navy) !important;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.booknest-brand-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--booknest-orange-light);
+    color: var(--booknest-orange);
+    font-size: 1.3rem;
+}
+
+.booknest-navbar .nav-link {
+    color: var(--booknest-text);
+    font-weight: 500;
+    padding: 10px 14px !important;
+    border-radius: 10px;
+    transition: 0.2s ease;
+}
+
+.booknest-navbar .nav-link:hover,
+.booknest-navbar .nav-link.active {
+    color: var(--booknest-orange);
+    background: var(--booknest-orange-light);
+}
+
+.booknest-nav-action {
+    width: 42px;
+    height: 42px;
+    border: 0;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #f7f8fa;
+    color: var(--booknest-navy);
+    transition: 0.2s ease;
+}
+
+.booknest-nav-action:hover {
+    background: var(--booknest-orange-light);
+    color: var(--booknest-orange);
+}
+
+.booknest-search {
+    width: 220px;
+}
+
+.booknest-search .form-control {
+    border: 1px solid var(--booknest-border);
+    background: #f8fafc;
+    border-radius: 50px 0 0 50px;
+    box-shadow: none;
+}
+
+.booknest-search .btn {
+    border-radius: 0 50px 50px 0;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.btn-booknest {
+    background: var(--booknest-orange);
+    border-color: var(--booknest-orange);
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 50px;
+    padding: 12px 24px;
+}
+
+.btn-booknest:hover {
+    background: #db5b17;
+    border-color: #db5b17;
+    color: #ffffff;
+}
+
+.btn-booknest-outline {
+    background: #ffffff;
+    border: 1px solid #f3c4a7;
+    color: var(--booknest-navy);
+    font-weight: 600;
+    border-radius: 50px;
+    padding: 12px 24px;
+}
+
+.btn-booknest-outline:hover {
+    background: var(--booknest-orange-light);
+    border-color: var(--booknest-orange);
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.booknest-hero {
+    background:
+        radial-gradient(
+            circle at 80% 20%,
+            #fff0df 0,
+            transparent 30%
+        ),
+        var(--booknest-cream);
+    overflow: hidden;
+    position: relative;
+}
+
+.booknest-hero-content {
+    padding: 85px 0;
+}
+
+.booknest-eyebrow {
+    color: #4b9b62;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.booknest-hero-title {
+    color: var(--booknest-navy);
+    font-size: clamp(3rem, 6vw, 5.3rem);
+    font-weight: 800;
+    line-height: 0.98;
+    letter-spacing: -2px;
+}
+
+.booknest-hero-image {
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+    object-fit: cover;
+    display: block;
+}
+
+.booknest-hero-decoration {
+    position: absolute;
+    color: #ffffff;
+    font-size: 2rem;
+    z-index: 2;
+}
+
+.booknest-star-one {
+    top: 55px;
+    left: 45px;
+}
+
+.booknest-star-two {
+    bottom: 80px;
+    right: 50px;
+}
+
+.booknest-hero-title .highlight {
+    color: var(--booknest-orange);
+}
+
+.booknest-hero-text {
+    color: #526579;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    max-width: 560px;
+}
+
+.booknest-hero-visual {
+    min-height: 500px;
+    background: #f8dfc8;
+    border-radius: 40px 40px 0 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.booknest-hero-visual::before {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: #ffd66b;
+    top: 40px;
+    right: 50px;
+    opacity: 0.65;
+}
+
+.booknest-hero-visual::after {
+    content: "✦";
+    position: absolute;
+    color: #ffffff;
+    font-size: 3rem;
+    top: 45px;
+    left: 40px;
+}
+
+.booknest-hero-placeholder {
+    height: 100%;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--booknest-navy);
+    font-size: 7rem;
+}
+
+.booknest-trust-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--booknest-text);
+    font-size: 0.9rem;
+}
+
+.booknest-trust-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    color: var(--booknest-orange);
+}
+
+
+/* =========================================================
+   SECTION HEADINGS
+   ========================================================= */
+
+.booknest-section-label {
+    color: var(--booknest-orange);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.booknest-section-title {
+    color: var(--booknest-navy);
+    font-weight: 800;
+    letter-spacing: -0.7px;
+}
+
+.booknest-section-description {
+    color: var(--booknest-muted);
+}
+
+
+/* =========================================================
+   BOOK CARDS
+   ========================================================= */
+
+.book-card {
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid var(--booknest-border) !important;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.book-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 1rem 2rem rgba(16, 42, 67, 0.10) !important;
+}
+
+.book-card-poster,
+.book-card-placeholder {
+    height: 290px;
+}
+
+.book-card-poster {
+    width: 100%;
+    object-fit: cover;
+}
+
+.book-card-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f4f6f8;
+    color: #9fb3c8;
+    font-size: 3rem;
+}
+
+.book-card {
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid var(--booknest-border) !important;
+    background: #ffffff;
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.book-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 1rem 2rem rgba(16, 42, 67, 0.10) !important;
+}
+
+.book-card-image {
+    height: 300px;
+    background: #f4f6f8;
+    overflow: hidden;
+}
+
+.book-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.book-card:hover .book-card-image img {
+    transform: scale(1.035);
+}
+
+.book-card-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9fb3c8;
+    font-size: 3rem;
+}
+
+.book-card-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 6px 10px;
+    border-radius: 50px;
+    background: #fff4cf;
+    color: #8a6200;
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+.book-card-wishlist {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 38px;
+    height: 38px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--booknest-navy);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 10px rgba(16, 42, 67, 0.10);
+}
+
+.book-card-wishlist:hover {
+    color: var(--booknest-orange);
+}
+
+.book-card-title {
+    color: var(--booknest-navy);
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.book-card-prices {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+/* =========================================================
+   PROMOTIONAL BANNER
+   ========================================================= */
+
+.booknest-promo {
+    position: relative;
+    overflow: hidden;
+    border-radius: 30px;
+    padding: 60px;
+    background: var(--booknest-navy);
+    color: #ffffff;
+}
+
+.booknest-promo-label {
+    display: inline-block;
+    margin-bottom: 15px;
+    color: #ffd166;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.booknest-promo-title {
+    max-width: 600px;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -1px;
+}
+
+.booknest-promo-text {
+    max-width: 560px;
+    color: #c8d6e5;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.booknest-promo-visual {
+    min-height: 270px;
+    border-radius: 25px;
+    background: #f8dfc8;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.booknest-promo-visual > i:first-child {
+    position: absolute;
+    top: 25px;
+    left: 30px;
+    color: #ffffff;
+    font-size: 2rem;
+}
+
+.booknest-promo-visual > i:last-child {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    color: #ffffff;
+    font-size: 2.5rem;
+}
+
+.booknest-promo-book {
+    width: 130px;
+    height: 170px;
+    border-radius: 8px;
+    background: #ffffff;
+    color: var(--booknest-orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    box-shadow: 15px 15px 0 rgba(16, 42, 67, 0.15);
+    transform: rotate(-6deg);
+}
+
+
+/* =========================================================
+   BENEFITS
+   ========================================================= */
+
+.booknest-benefit-card {
+    height: 100%;
+    padding: 30px 24px;
+    background: #ffffff;
+    border: 1px solid var(--booknest-border);
+    border-radius: 20px;
+    text-align: center;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.booknest-benefit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 1rem 2rem rgba(16, 42, 67, 0.08);
+}
+
+.booknest-benefit-icon {
+    width: 58px;
+    height: 58px;
+    margin: 0 auto 20px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+}
+
+.booknest-benefit-orange {
+    background: var(--booknest-orange-light);
+    color: var(--booknest-orange);
+}
+
+.booknest-benefit-green {
+    background: var(--booknest-green);
+    color: #3d8b50;
+}
+
+.booknest-benefit-blue {
+    background: var(--booknest-blue);
+    color: #39739d;
+}
+
+.booknest-benefit-purple {
+    background: var(--booknest-purple);
+    color: #7356a8;
+}
+
+/* =========================================================
+   FINAL CTA
+   ========================================================= */
+
+.booknest-final-cta {
+    padding: 70px 30px;
+    border-radius: 30px;
+    background:
+        radial-gradient(
+            circle at 10% 20%,
+            #fff1df 0,
+            transparent 25%
+        ),
+        #f8fafc;
+}
+/* =========================================================
+   CATEGORY CARDS
+   ========================================================= */
+
+.category-card {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 0 !important;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 1rem 2rem rgba(16, 42, 67, 0.10) !important;
+}
+.category-card-image {
+    height: 170px;
+    overflow: hidden;
+}
+
+.category-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.category-card:hover .category-card-image img {
+    transform: scale(1.05);
+}
+
+.category-card-placeholder {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--booknest-cream);
+    color: var(--booknest-orange);
+    font-size: 3rem;
+}
+
+.category-card-arrow {
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #f5f7f9;
+    color: var(--booknest-navy);
+    transition: 0.2s ease;
+}
+
+.category-card:hover .category-card-arrow {
+    background: var(--booknest-orange);
+    color: #ffffff;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 991.98px) {
+    .booknest-search {
+        width: 100%;
+    }
+
+    .booknest-hero-content {
+        padding: 60px 0;
+    }
+
+    .booknest-hero-visual {
+        min-height: 380px;
+    }
+
+    .booknest-hero-placeholder {
+        min-height: 380px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .booknest-section {
+        padding: 55px 0;
+    }
+
+    .booknest-hero-title {
+        font-size: 3rem;
+    }
+
+    .booknest-hero-visual {
+        min-height: 300px;
+        border-radius: 28px;
+    }
+
+    .booknest-hero-placeholder {
+        min-height: 300px;
+        font-size: 5rem;
+    }
+}
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.booknest-footer {
+    background: var(--booknest-navy);
+    color: #ffffff;
+    padding: 70px 0 25px;
+}
+
+.booknest-footer-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+.booknest-footer-brand .booknest-brand-icon {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffd166;
+}
+
+.booknest-footer-description {
+    color: #b9c7d6;
+    line-height: 1.7;
+}
+
+.booknest-footer-heading {
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.booknest-footer-links li {
+    margin-bottom: 12px;
+}
+
+.booknest-footer-links a {
+    color: #b9c7d6;
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+
+.booknest-footer-links a:hover {
+    color: #ffffff;
+}
+
+.booknest-social {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.10);
+    color: #ffffff;
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+
+.booknest-social:hover {
+    background: var(--booknest-orange);
+    color: #ffffff;
+}
+
+.booknest-footer-divider {
+    border-color: rgba(255, 255, 255, 0.12);
+    margin: 45px 0 20px;
+}
+.booknest-catalog-search {
+    padding: 8px;
+    border: 1px solid var(--booknest-border);
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow: 0 8px 30px rgba(16, 42, 67, 0.06);
+}
+/* =========================================================
+   CATALOG FILTERS
+   ========================================================= */
+
+.booknest-filter-card {
+    padding: 24px;
+    background: #ffffff;
+    border: 1px solid var(--booknest-border);
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(16, 42, 67, 0.05);
+}
+
+.booknest-filter-group {
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--booknest-border);
+}
+
+.booknest-filter-group:last-of-type {
+    border-bottom: 0;
+}
+
+.booknest-filter-heading {
+    color: var(--booknest-navy);
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.booknest-filter-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.booknest-filter-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--booknest-muted);
+    font-size: 0.92rem;
+    cursor: pointer;
+}
+
+.booknest-filter-option input {
+    width: 17px;
+    height: 17px;
+    accent-color: var(--booknest-orange);
+}
+
+.booknest-filter-option:has(input:checked) {
+    color: var(--booknest-navy);
+    font-weight: 600;
+}
+.booknest-results-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--booknest-border);
+}
+
+.booknest-sort {
+    min-width: 160px;
+    border-radius: 10px;
+    border-color: var(--booknest-border);
+}
+
+@media (max-width: 575.98px) {
+    .booknest-results-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .booknest-sort {
+        width: 100%;
+    }
+}
+
+/* =========================================================
+   BOOK DETAIL
+   ========================================================= */
+
+.booknest-book-detail {
+    background: #fff;
+}
+
+.booknest-detail-poster {
+    overflow: hidden;
+    border-radius: 28px;
+    background: var(--booknest-cream);
+    box-shadow: 0 18px 45px rgba(16, 42, 67, 0.10);
+}
+
+.booknest-detail-poster-image {
+    display: block;
+    width: 100%;
+    height: 620px;
+    object-fit: cover;
+}
+
+.booknest-detail-poster-placeholder {
+    min-height: 620px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--booknest-cream);
+    color: #9fb3c8;
+    font-size: 7rem;
+}
+
+.booknest-detail-category,
+.booknest-detail-featured {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 14px;
+    border-radius: 50px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.booknest-detail-category {
+    background: var(--booknest-orange-light);
+    color: var(--booknest-orange);
+}
+
+.booknest-detail-category:hover {
+    background: var(--booknest-orange);
+    color: #fff;
+}
+
+.booknest-detail-featured {
+    background: var(--booknest-yellow);
+    color: #8a6200;
+}
+
+.booknest-detail-title {
+    color: var(--booknest-navy);
+    font-size: clamp(2.4rem, 4vw, 4rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -1.5px;
+}
+
+.booknest-detail-author {
+    color: var(--booknest-muted);
+    font-size: 1rem;
+}
+
+.booknest-detail-author a {
+    color: var(--booknest-navy);
+}
+
+.booknest-detail-description {
+    color: var(--booknest-muted);
+    line-height: 1.8;
+    font-size: 1rem;
+}
+
+.booknest-detail-subtitle {
+    color: var(--booknest-navy);
+    font-weight: 800;
+}
+
+.booknest-format-section {
+    background: #f8fafc;
+    border: 1px solid var(--booknest-border);
+    border-radius: 24px;
+}
+
+.booknest-format-card {
+    background: #fff;
+    border: 1px solid var(--booknest-border);
+    border-radius: 18px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease,
+                border-color 0.2s ease;
+}
+
+.booknest-format-card:hover {
+    transform: translateY(-3px);
+    border-color: #f3c4a7;
+    box-shadow: 0 12px 28px rgba(16, 42, 67, 0.08);
+}
+
+.booknest-format-card .bi {
+    color: var(--booknest-orange);
+}
+
+.booknest-format-price {
+    color: var(--booknest-navy);
+    font-size: 1.35rem;
+    font-weight: 800;
+}
+
+.booknest-stock-available {
+    color: #3d8b50;
+}
+
+.booknest-stock-unavailable {
+    color: #c0392b;
+}
+
+@media (max-width: 991.98px) {
+    .booknest-detail-poster-image {
+        height: 520px;
+    }
+
+    .booknest-detail-poster-placeholder {
+        min-height: 520px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .booknest-detail-poster {
+        border-radius: 22px;
+    }
+
+    .booknest-detail-poster-image {
+        height: 420px;
+    }
+
+    .booknest-detail-poster-placeholder {
+        min-height: 420px;
+        font-size: 5rem;
+    }
+
+    .booknest-detail-title {
+        font-size: 2.5rem;
+    }
+
+    .booknest-format-section {
+        border-radius: 20px;
+    }
+}
+/* =========================================================
+   CATEGORY DETAIL
+   ========================================================= */
+
+.booknest-category-hero-image {
+    height: 240px;
+    overflow: hidden;
+    border-radius: 24px;
+    background: var(--booknest-cream);
+    box-shadow: 0 12px 30px rgba(16, 42, 67, 0.08);
+}
+
+.booknest-category-hero-image img {
+    display: block;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.booknest-category-hero-image:hover img {
+    transform: scale(1.03);
+}
+
+@media (max-width: 767.98px) {
+    .booknest-category-hero-image {
+        height: 220px;
+    }
+}
+
+/* =========================================================
+   GLOBAL PAGE LAYOUT
+   ========================================================= */
+
+
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.booknest-main {
+    flex: 1 0 auto;
+}
+
+.booknest-footer {
+    flex-shrink: 0;
+}
+.booknest-page-fill {
+    min-height: calc(100vh - 72px);
+}
+
+.booknest-breadcrumb .breadcrumb-item {
+    color: var(--booknest-muted);
+    font-size: 0.85rem;
+}
+
+.booknest-breadcrumb .breadcrumb-item a {
+    color: var(--booknest-navy);
+    text-decoration: none;
+}
+
+.booknest-breadcrumb .breadcrumb-item a:hover {
+    color: var(--booknest-orange);
+}
+
+.booknest-breadcrumb .breadcrumb-item.active {
+    color: var(--booknest-muted);
+}

@@ -1,0 +1,41 @@
+<nav aria-label="breadcrumb" class="mb-4">
+    <ol class="breadcrumb booknest-breadcrumb">
+
+        <li class="breadcrumb-item">
+            <a href="{% url 'books:home' %}">
+                Home
+            </a>
+        </li>
+
+        {% if breadcrumb_books %}
+            <li class="breadcrumb-item">
+                <a href="{% url 'books:book_list' %}">
+                    Books
+                </a>
+            </li>
+        {% endif %}
+
+        {% if breadcrumb_categories %}
+            <li class="breadcrumb-item">
+                <a href="{% url 'books:category_list' %}">
+                    Categories
+                </a>
+            </li>
+        {% endif %}
+
+        {% if breadcrumb_category %}
+            <li class="breadcrumb-item">
+                <a href="{% url 'books:category_books' breadcrumb_category.slug %}">
+                    {{ breadcrumb_category.name }}
+                </a>
+            </li>
+        {% endif %}
+
+        {% if breadcrumb_current %}
+            <li class="breadcrumb-item active" aria-current="page">
+                {{ breadcrumb_current }}
+            </li>
+        {% endif %}
+
+    </ol>
+</nav>

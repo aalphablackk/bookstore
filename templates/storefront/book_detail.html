@@ -1,0 +1,488 @@
+{% extends "base.html" %}
+{% load humanize %}
+
+{% block title %}
+    {{ book.title }} | BookNest
+{% endblock %}
+
+{% block content %}
+
+<section class="booknest-section booknest-book-detail">
+    <div class="container">
+        {% include "includes/breadcrumb.html" %}
+
+
+        <!-- Main product section -->
+        <div class="row g-5">
+
+            <!-- Poster -->
+            <div class="col-12 col-lg-5">
+
+                <div class="booknest-detail-poster">
+
+                    {% if book.poster %}
+
+                        <img
+                            src="{{ book.poster.url }}"
+                            class="booknest-detail-poster-image"
+                            alt="{{ book.title }}"
+                        >
+
+                    {% elif book.poster_url %}
+
+                        <img
+                            src="{{ book.poster_url }}"
+                            class="booknest-detail-poster-image"
+                            alt="{{ book.title }}"
+                        >
+
+                    {% else %}
+
+                        <div
+                            class="d-flex align-items-center
+                                   justify-content-center
+                                   bg-light"
+                            style="min-height: 500px;"
+                        >
+                            <i
+                                class="bi bi-book display-1 text-muted"
+                            ></i>
+                        </div>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+
+            <!-- Information -->
+            <div class="col-12 col-lg-7 booknest-detail-info">
+
+                <!-- Category -->
+                <div class="d-flex flex-wrap gap-2 mb-3">
+
+                    <a
+                        href="{% url 'books:category_books' book.category.slug %}"
+                        class="booknest-detail-category"
+                    >
+                        {{ book.category.name }}
+                    </a>
+
+                    {% if book.is_featured %}
+                        <span class="booknest-detail-featured">
+                            <i class="bi bi-star-fill me-1"></i>
+                            Featured
+                        </span>
+                    {% endif %}
+
+                </div>
+
+
+                <!-- Title -->
+                <h1 class="booknest-detail-title mb-2">
+                    {{ book.title }}
+                </h1>
+
+
+                <!-- Author -->
+                <p class="booknest-detail-author mb-4">
+                    <i class="bi bi-person me-1"></i>
+                    By
+                    <a
+                        href="#"
+                        class="text-decoration-none fw-semibold"
+                    >
+                        {{ book.author.name }}
+                    </a>
+                </p>
+
+
+                <!-- Description -->
+                <div class="booknest-detail-description mb-4">
+
+                    <h5 class="booknest-detail-subtitle mb-2">
+                        About this book
+                    </h5>
+
+                    <p class="mb-0">
+                        {{ book.description }}
+                    </p>
+
+                </div>
+
+
+                <!-- Available formats -->
+                <div class="booknest-format-section mb-4">
+
+                    <div class="p-4">
+
+                        <h5 class="booknest-detail-subtitle mb-3">
+                            Available Formats
+                        </h5>
+
+
+                        {% if book.available_format == "BOTH" %}
+
+                            <div class="row g-3">
+
+                                <!-- Physical -->
+                                <div class="col-12 col-md-6">
+
+                                    <div class="booknest-format-card h-100">
+                                        <div class="p-4">
+
+                                            <div
+                                                class="d-flex
+                                                       justify-content-between
+                                                       align-items-start"
+                                            >
+
+                                                <div>
+                                                    <i
+                                                        class="bi bi-book
+                                                               fs-4"
+                                                    ></i>
+
+                                                    <h6
+                                                        class="fw-bold mt-2 mb-1"
+                                                    >
+                                                        Physical Book
+                                                    </h6>
+                                                </div>
+
+                                                <span
+                                                    class="badge text-bg-light"
+                                                >
+                                                    Physical
+                                                </span>
+
+                                            </div>
+
+                                            <div class="booknest-format-price mt-3">
+                                                ₦{{ book.physical_price|floatformat:0|intcomma }}
+                                            </div>
+
+                                            {% if book.stock > 0 %}
+                                                <small class="booknest-stock-available">
+                                                    <i
+                                                        class="bi bi-check-circle
+                                                               me-1"
+                                                    ></i>
+                                                    {{ book.stock }} in stock
+                                                </small>
+                                            {% else %}
+                                                <small class="booknest-stock-unavailable">
+                                                    Out of stock
+                                                </small>
+                                            {% endif %}
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- Digital -->
+                                <div class="col-12 col-md-6">
+
+                                    <div class="booknest-format-card h-100">
+                                        <div class="p-4">
+
+                                            <div
+                                                class="d-flex
+                                                       justify-content-between
+                                                       align-items-start"
+                                            >
+
+                                                <div>
+                                                    <i
+                                                        class="bi bi-tablet
+                                                               fs-4"
+                                                    ></i>
+
+                                                    <h6
+                                                        class="fw-bold mt-2 mb-1"
+                                                    >
+                                                        Digital Book
+                                                    </h6>
+                                                </div>
+
+                                                <span
+                                                    class="badge text-bg-light"
+                                                >
+                                                    Digital
+                                                </span>
+
+                                            </div>
+
+                                            <div class="booknest-format-price mt-3">
+                                                ₦{{ book.digital_price|floatformat:0|intcomma }}
+                                            </div>
+
+                                            <small class="text-muted">
+                                                Read digitally after purchase
+                                            </small>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                        {% elif book.available_format == "PHYSICAL" %}
+
+                            <div class="card border">
+
+                                <div class="card-body">
+
+                                    <div class="d-flex
+                                                justify-content-between
+                                                align-items-center">
+
+                                        <div>
+                                            <i
+                                                class="bi bi-book fs-4 me-2"
+                                            ></i>
+
+                                            <strong>
+                                                Physical Book
+                                            </strong>
+                                        </div>
+
+                                        <span class="fs-5 fw-bold">
+                                            ₦{{ book.physical_price|floatformat:0|intcomma }}
+                                        </span>
+
+                                    </div>
+
+                                    <hr>
+
+                                    {% if book.stock > 0 %}
+                                        <small class="booknest-stock-available">
+                                            <i
+                                                class="bi bi-check-circle me-1"
+                                            ></i>
+                                            {{ book.stock }} in stock
+                                        </small>
+                                    {% else %}
+                                        <small class="booknest-stock-unavailable">
+                                            Out of stock
+                                        </small>
+                                    {% endif %}
+
+                                </div>
+
+                            </div>
+
+
+                        {% elif book.available_format == "DIGITAL" %}
+
+                            <div class="card border">
+
+                                <div class="card-body">
+
+                                    <div class="d-flex
+                                                justify-content-between
+                                                align-items-center">
+
+                                        <div>
+                                            <i
+                                                class="bi bi-tablet fs-4 me-2"
+                                            ></i>
+
+                                            <strong>
+                                                Digital Book
+                                            </strong>
+                                        </div>
+
+                                        <span class="fs-5 fw-bold">
+                                            ₦{{ book.digital_price|floatformat:0|intcomma }}
+                                        </span>
+
+                                    </div>
+
+                                    <hr>
+
+                                    <small class="text-muted">
+                                        Read digitally after purchase.
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+
+                <!-- Actions -->
+                <div class="d-flex flex-column flex-sm-row gap-2 mb-4">
+
+                    <button
+                        type="button"
+                        class="btn btn-booknest btn-lg flex-grow-1"
+                    >
+                        <i class="bi bi-cart-plus me-2"></i>
+                        Add to Cart
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn btn-booknest-outline btn-lg"
+                        aria-label="Add to wishlist"
+                    >
+                        <i class="bi bi-heart me-1"></i>
+                        Wishlist
+                    </button>
+
+                </div>
+
+
+                <!-- Additional information -->
+                <div class="border-top pt-4">
+
+                    <h5 class="fw-bold mb-3">
+                        Book Information
+                    </h5>
+
+                    <div class="row g-3">
+
+                        {% if book.author %}
+                            <div class="col-12 col-sm-6">
+                                <small class="text-muted d-block">
+                                    Author
+                                </small>
+                                <strong>
+                                    {{ book.author.name }}
+                                </strong>
+                            </div>
+                        {% endif %}
+
+                        {% if book.publisher %}
+                            <div class="col-12 col-sm-6">
+                                <small class="text-muted d-block">
+                                    Publisher
+                                </small>
+                                <strong>
+                                    {{ book.publisher }}
+                                </strong>
+                            </div>
+                        {% endif %}
+
+                        {% if book.pages %}
+                            <div class="col-12 col-sm-6">
+                                <small class="text-muted d-block">
+                                    Pages
+                                </small>
+                                <strong>
+                                    {{ book.pages }}
+                                </strong>
+                            </div>
+                        {% endif %}
+
+                        {% if book.language %}
+                            <div class="col-12 col-sm-6">
+                                <small class="text-muted d-block">
+                                    Language
+                                </small>
+                                <strong>
+                                    {{ book.language }}
+                                </strong>
+                            </div>
+                        {% endif %}
+
+                        {% if book.isbn %}
+                            <div class="col-12 col-sm-6">
+                                <small class="text-muted d-block">
+                                    ISBN
+                                </small>
+                                <strong>
+                                    {{ book.isbn }}
+                                </strong>
+                            </div>
+                        {% endif %}
+
+                        {% if book.age_min or book.age_max %}
+                            <div class="col-12 col-sm-6">
+                                <small class="text-muted d-block">
+                                    Recommended Age
+                                </small>
+
+                                <strong>
+                                    {% if book.age_min %}
+                                        {{ book.age_min }}
+                                    {% endif %}
+
+                                    {% if book.age_min and book.age_max %}
+                                        –
+                                    {% endif %}
+
+                                    {% if book.age_max %}
+                                        {{ book.age_max }}
+                                    {% endif %}
+                                    years
+                                </strong>
+                            </div>
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Specifications -->
+        {% if specifications %}
+
+            <div class="mt-5 pt-5 border-top">
+
+                <h3 class="fw-bold mb-4">
+                    Specifications
+                </h3>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered align-middle">
+
+                        <tbody>
+
+                            {% for specification in specifications %}
+
+                                <tr>
+                                    <th class="bg-light" style="width: 30%;">
+                                        {{ specification.name }}
+                                    </th>
+
+                                    <td>
+                                        {{ specification.value }}
+                                    </td>
+                                </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+{% endblock %}

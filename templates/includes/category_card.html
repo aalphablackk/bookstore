@@ -1,0 +1,55 @@
+<a
+    href="{% url 'books:category_books' category.slug %}"
+    class="text-decoration-none text-dark"
+>
+    <div class="card h-100 border-0 shadow-sm category-card">
+
+        <div class="category-card-image">
+
+            {% if category.image %}
+
+                <img
+                    src="{{ category.image.url }}"
+                    alt="{{ category.name }}"
+                    loading="lazy"
+                >
+
+            {% else %}
+
+                <div class="category-card-placeholder">
+                    <i class="bi bi-book"></i>
+                </div>
+
+            {% endif %}
+
+        </div>
+
+
+        <div class="card-body text-center p-3">
+
+            <h5 class="fw-bold mb-2">
+                {{ category.name }}
+            </h5>
+
+            {% if category.description %}
+
+                <p class="text-muted small mb-3">
+                    {{ category.description|truncatewords:9 }}
+                </p>
+
+            {% else %}
+
+                <p class="text-muted small mb-3">
+                    Explore this collection.
+                </p>
+
+            {% endif %}
+
+            <span class="category-card-arrow">
+                <i class="bi bi-arrow-right"></i>
+            </span>
+
+        </div>
+
+    </div>
+</a>
