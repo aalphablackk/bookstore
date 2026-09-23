@@ -2,7 +2,7 @@
    BOOKNEST DESIGN SYSTEM
    ========================================================= */
 
-:root {
+/* :root {
     --booknest-navy: #102a43;
     --booknest-orange: #f26b21;
     --booknest-orange-light: #fff1e8;
@@ -15,20 +15,67 @@
     --booknest-text: #243b53;
     --booknest-muted: #627d98;
     --booknest-border: #e6e9ed;
+} */
+
+/* :root {
+    --booknest-navy: #5b4b8a;
+    --booknest-orange: #ff6b6b;
+    --booknest-orange-light: #ffe5e5;
+
+    --booknest-cream: #fff9e6;
+    --booknest-yellow: #ffd93d;
+
+    --booknest-green: #6bcB77;
+    --booknest-blue: #4dabf7;
+
+    --booknest-pink: #ff9fba;
+    --booknest-purple: #9b7ede;
+
+    --booknest-text: #34344a;
+    --booknest-muted: #74748a;
+    --booknest-border: #e8e3f0;
+} */
+
+:root {
+  --booknest-navy: #173f5f;
+  --booknest-orange: #f97316;
+  --booknest-yellow: #ffd166;
+  --booknest-teal: #2a9d8f;
+  --booknest-pink: #e76f9a;
+
+  --booknest-cream: #fff9f0;
+  --booknest-peach: #fff0e6;
+  --booknest-blue: #eaf6ff;
+  --booknest-mint: #e8f7f1;
+
+  --booknest-text: #243b53;
+  --booknest-muted: #627d98;
+  --booknest-border: #e5e7eb;
 }
 
-
 /* =========================================================
-   GLOBAL
+   01. GLOBAL
    ========================================================= */
 
+html,
 body {
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     color: var(--booknest-text);
     background: #ffffff;
 }
 
 a {
     color: inherit;
+}
+
+.booknest-main {
+    flex: 1 0 auto;
 }
 
 .booknest-section {
@@ -39,9 +86,13 @@ a {
     background: var(--booknest-cream);
 }
 
+.booknest-page-fill {
+    min-height: calc(100vh - 72px);
+}
+
 
 /* =========================================================
-   NAVBAR
+   02. NAVBAR
    ========================================================= */
 
 .booknest-navbar {
@@ -116,7 +167,7 @@ a {
 
 
 /* =========================================================
-   BUTTONS
+   03. BUTTONS
    ========================================================= */
 
 .btn-booknest {
@@ -150,7 +201,7 @@ a {
 
 
 /* =========================================================
-   HERO
+   04. HERO
    ========================================================= */
 
 .booknest-hero {
@@ -185,31 +236,6 @@ a {
     letter-spacing: -2px;
 }
 
-.booknest-hero-image {
-    width: 100%;
-    height: 100%;
-    min-height: 500px;
-    object-fit: cover;
-    display: block;
-}
-
-.booknest-hero-decoration {
-    position: absolute;
-    color: #ffffff;
-    font-size: 2rem;
-    z-index: 2;
-}
-
-.booknest-star-one {
-    top: 55px;
-    left: 45px;
-}
-
-.booknest-star-two {
-    bottom: 80px;
-    right: 50px;
-}
-
 .booknest-hero-title .highlight {
     color: var(--booknest-orange);
 }
@@ -227,6 +253,14 @@ a {
     border-radius: 40px 40px 0 0;
     position: relative;
     overflow: hidden;
+}
+
+.booknest-hero-image {
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+    object-fit: cover;
+    display: block;
 }
 
 .booknest-hero-visual::before {
@@ -248,6 +282,23 @@ a {
     font-size: 3rem;
     top: 45px;
     left: 40px;
+}
+
+.booknest-hero-decoration {
+    position: absolute;
+    color: #ffffff;
+    font-size: 2rem;
+    z-index: 2;
+}
+
+.booknest-star-one {
+    top: 55px;
+    left: 45px;
+}
+
+.booknest-star-two {
+    bottom: 80px;
+    right: 50px;
 }
 
 .booknest-hero-placeholder {
@@ -281,7 +332,7 @@ a {
 
 
 /* =========================================================
-   SECTION HEADINGS
+   05. SECTION HEADINGS
    ========================================================= */
 
 .booknest-section-label {
@@ -304,43 +355,11 @@ a {
 
 
 /* =========================================================
-   BOOK CARDS
+   06. BOOK CARDS
    ========================================================= */
 
 .book-card {
-    border-radius: 18px;
-    overflow: hidden;
-    border: 1px solid var(--booknest-border) !important;
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-.book-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 1rem 2rem rgba(16, 42, 67, 0.10) !important;
-}
-
-.book-card-poster,
-.book-card-placeholder {
-    height: 290px;
-}
-
-.book-card-poster {
-    width: 100%;
-    object-fit: cover;
-}
-
-.book-card-placeholder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #f4f6f8;
-    color: #9fb3c8;
-    font-size: 3rem;
-}
-
-.book-card {
+    height: 100%;
     border-radius: 18px;
     overflow: hidden;
     border: 1px solid var(--booknest-border) !important;
@@ -361,6 +380,13 @@ a {
     overflow: hidden;
 }
 
+.book-card-poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
 .book-card-image img {
     width: 100%;
     height: 100%;
@@ -375,9 +401,11 @@ a {
 .book-card-placeholder {
     width: 100%;
     height: 100%;
+    min-height: 290px;
     display: flex;
     align-items: center;
     justify-content: center;
+    background: #f4f6f8;
     color: #9fb3c8;
     font-size: 3rem;
 }
@@ -388,7 +416,7 @@ a {
     left: 12px;
     padding: 6px 10px;
     border-radius: 50px;
-    background: #fff4cf;
+    background: var(--booknest-yellow);
     color: #8a6200;
     font-size: 0.72rem;
     font-weight: 700;
@@ -426,8 +454,349 @@ a {
     gap: 15px;
 }
 
+
 /* =========================================================
-   PROMOTIONAL BANNER
+   07. CATEGORY CARDS
+   ========================================================= */
+
+.category-card {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 0 !important;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 1rem 2rem rgba(16, 42, 67, 0.10) !important;
+}
+
+.category-card-image {
+    height: 170px;
+    overflow: hidden;
+}
+
+.category-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.category-card:hover .category-card-image img {
+    transform: scale(1.05);
+}
+
+.category-card-placeholder {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--booknest-cream);
+    color: var(--booknest-orange);
+    font-size: 3rem;
+}
+
+.category-card-arrow {
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #f5f7f9;
+    color: var(--booknest-navy);
+    transition: 0.2s ease;
+}
+
+.category-card:hover .category-card-arrow {
+    background: var(--booknest-orange);
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   08. CATALOG SEARCH & FILTERS
+   ========================================================= */
+
+.booknest-catalog-search {
+    padding: 8px;
+    border: 1px solid var(--booknest-border);
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow: 0 8px 30px rgba(16, 42, 67, 0.06);
+}
+
+.booknest-filter-card {
+    padding: 24px;
+    background: #ffffff;
+    border: 1px solid var(--booknest-border);
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(16, 42, 67, 0.05);
+}
+
+.booknest-filter-group {
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--booknest-border);
+}
+
+.booknest-filter-group:last-of-type {
+    border-bottom: 0;
+}
+
+.booknest-filter-heading {
+    color: var(--booknest-navy);
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.booknest-filter-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.booknest-filter-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--booknest-muted);
+    font-size: 0.92rem;
+    cursor: pointer;
+}
+
+.booknest-filter-option input {
+    width: 17px;
+    height: 17px;
+    accent-color: var(--booknest-orange);
+}
+
+.booknest-filter-option:has(input:checked) {
+    color: var(--booknest-navy);
+    font-weight: 600;
+}
+
+.booknest-results-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--booknest-border);
+}
+
+.booknest-sort {
+    min-width: 160px;
+    border-radius: 10px;
+    border-color: var(--booknest-border);
+}
+
+
+/* =========================================================
+   09. PAGINATION
+   ========================================================= */
+
+.booknest-pagination .pagination {
+    gap: 0.35rem;
+    margin-bottom: 0;
+}
+
+.booknest-pagination .page-link {
+    min-width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--booknest-border);
+    border-radius: 8px;
+    background: #ffffff;
+    color: var(--booknest-navy);
+    font-weight: 500;
+    box-shadow: none;
+    transition: all 0.2s ease;
+}
+
+.booknest-pagination .page-link:hover {
+    background: var(--booknest-orange-light);
+    border-color: var(--booknest-orange);
+    color: var(--booknest-orange);
+}
+
+.booknest-pagination .page-item.active .page-link {
+    background: var(--booknest-orange);
+    border-color: var(--booknest-orange);
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.booknest-pagination .page-item.disabled .page-link {
+    background: #f8f9fa;
+    border-color: var(--booknest-border);
+    color: #adb5bd;
+    cursor: not-allowed;
+}
+
+.booknest-pagination .page-link:focus {
+    box-shadow: 0 0 0 0.2rem rgba(242, 107, 33, 0.15);
+}
+
+
+/* =========================================================
+   10. BOOK DETAIL
+   ========================================================= */
+
+.booknest-book-detail {
+    background: #ffffff;
+}
+
+.booknest-detail-poster {
+    overflow: hidden;
+    border-radius: 28px;
+    background: var(--booknest-cream);
+    box-shadow: 0 18px 45px rgba(16, 42, 67, 0.10);
+}
+
+.booknest-detail-poster-image {
+    display: block;
+    width: 100%;
+    height: 620px;
+    object-fit: cover;
+}
+
+.booknest-detail-poster-placeholder {
+    min-height: 620px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--booknest-cream);
+    color: #9fb3c8;
+    font-size: 7rem;
+}
+
+.booknest-detail-category,
+.booknest-detail-featured {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 14px;
+    border-radius: 50px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.booknest-detail-category {
+    background: var(--booknest-orange-light);
+    color: var(--booknest-orange);
+}
+
+.booknest-detail-category:hover {
+    background: var(--booknest-orange);
+    color: #ffffff;
+}
+
+.booknest-detail-featured {
+    background: var(--booknest-yellow);
+    color: #8a6200;
+}
+
+.booknest-detail-title {
+    color: var(--booknest-navy);
+    font-size: clamp(2.4rem, 4vw, 4rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -1.5px;
+}
+
+.booknest-detail-author {
+    color: var(--booknest-muted);
+    font-size: 1rem;
+}
+
+.booknest-detail-author a {
+    color: var(--booknest-navy);
+}
+
+.booknest-detail-description {
+    color: var(--booknest-muted);
+    line-height: 1.8;
+    font-size: 1rem;
+}
+
+.booknest-detail-subtitle {
+    color: var(--booknest-navy);
+    font-weight: 800;
+}
+
+.booknest-format-section {
+    background: #f8fafc;
+    border: 1px solid var(--booknest-border);
+    border-radius: 24px;
+}
+
+.booknest-format-card {
+    background: #ffffff;
+    border: 1px solid var(--booknest-border);
+    border-radius: 18px;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.booknest-format-card:hover {
+    transform: translateY(-3px);
+    border-color: #f3c4a7;
+    box-shadow: 0 12px 28px rgba(16, 42, 67, 0.08);
+}
+
+.booknest-format-card .bi {
+    color: var(--booknest-orange);
+}
+
+.booknest-format-price {
+    color: var(--booknest-navy);
+    font-size: 1.35rem;
+    font-weight: 800;
+}
+
+.booknest-stock-available {
+    color: #3d8b50;
+}
+
+.booknest-stock-unavailable {
+    color: #c0392b;
+}
+
+
+/* =========================================================
+   11. CATEGORY DETAIL
+   ========================================================= */
+
+.booknest-category-hero-image {
+    height: 240px;
+    overflow: hidden;
+    border-radius: 24px;
+    background: var(--booknest-cream);
+    box-shadow: 0 12px 30px rgba(16, 42, 67, 0.08);
+}
+
+.booknest-category-hero-image img {
+    display: block;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.booknest-category-hero-image:hover img {
+    transform: scale(1.03);
+}
+
+
+/* =========================================================
+   12. PROMOTIONAL BANNER
    ========================================================= */
 
 .booknest-promo {
@@ -507,7 +876,7 @@ a {
 
 
 /* =========================================================
-   BENEFITS
+   13. BENEFITS
    ========================================================= */
 
 .booknest-benefit-card {
@@ -558,8 +927,9 @@ a {
     color: #7356a8;
 }
 
+
 /* =========================================================
-   FINAL CTA
+   14. FINAL CTA
    ========================================================= */
 
 .booknest-final-cta {
@@ -573,112 +943,37 @@ a {
         ),
         #f8fafc;
 }
+
+
 /* =========================================================
-   CATEGORY CARDS
+   15. BREADCRUMBS
    ========================================================= */
 
-.category-card {
-    border-radius: 20px;
-    overflow: hidden;
-    border: 0 !important;
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
+.booknest-breadcrumb .breadcrumb-item {
+    color: var(--booknest-muted);
+    font-size: 0.85rem;
 }
 
-.category-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 1rem 2rem rgba(16, 42, 67, 0.10) !important;
-}
-.category-card-image {
-    height: 170px;
-    overflow: hidden;
-}
-
-.category-card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.category-card:hover .category-card-image img {
-    transform: scale(1.05);
-}
-
-.category-card-placeholder {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--booknest-cream);
-    color: var(--booknest-orange);
-    font-size: 3rem;
-}
-
-.category-card-arrow {
-    width: 34px;
-    height: 34px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: #f5f7f9;
+.booknest-breadcrumb .breadcrumb-item a {
     color: var(--booknest-navy);
-    transition: 0.2s ease;
+    text-decoration: none;
 }
 
-.category-card:hover .category-card-arrow {
-    background: var(--booknest-orange);
-    color: #ffffff;
+.booknest-breadcrumb .breadcrumb-item a:hover {
+    color: var(--booknest-orange);
 }
+
+.booknest-breadcrumb .breadcrumb-item.active {
+    color: var(--booknest-muted);
+}
+
 
 /* =========================================================
-   RESPONSIVE
-   ========================================================= */
-
-@media (max-width: 991.98px) {
-    .booknest-search {
-        width: 100%;
-    }
-
-    .booknest-hero-content {
-        padding: 60px 0;
-    }
-
-    .booknest-hero-visual {
-        min-height: 380px;
-    }
-
-    .booknest-hero-placeholder {
-        min-height: 380px;
-    }
-}
-
-@media (max-width: 575.98px) {
-    .booknest-section {
-        padding: 55px 0;
-    }
-
-    .booknest-hero-title {
-        font-size: 3rem;
-    }
-
-    .booknest-hero-visual {
-        min-height: 300px;
-        border-radius: 28px;
-    }
-
-    .booknest-hero-placeholder {
-        min-height: 300px;
-        font-size: 5rem;
-    }
-}
-/* =========================================================
-   FOOTER
+   16. FOOTER
    ========================================================= */
 
 .booknest-footer {
+    flex-shrink: 0;
     background: var(--booknest-navy);
     color: #ffffff;
     padding: 70px 0 25px;
@@ -745,217 +1040,30 @@ a {
     border-color: rgba(255, 255, 255, 0.12);
     margin: 45px 0 20px;
 }
-.booknest-catalog-search {
-    padding: 8px;
-    border: 1px solid var(--booknest-border);
-    border-radius: 18px;
-    background: #ffffff;
-    box-shadow: 0 8px 30px rgba(16, 42, 67, 0.06);
-}
-/* =========================================================
-   CATALOG FILTERS
-   ========================================================= */
 
-.booknest-filter-card {
-    padding: 24px;
-    background: #ffffff;
-    border: 1px solid var(--booknest-border);
-    border-radius: 20px;
-    box-shadow: 0 8px 30px rgba(16, 42, 67, 0.05);
-}
-
-.booknest-filter-group {
-    padding-bottom: 24px;
-    margin-bottom: 24px;
-    border-bottom: 1px solid var(--booknest-border);
-}
-
-.booknest-filter-group:last-of-type {
-    border-bottom: 0;
-}
-
-.booknest-filter-heading {
-    color: var(--booknest-navy);
-    font-weight: 700;
-    margin-bottom: 15px;
-}
-
-.booknest-filter-options {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.booknest-filter-option {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--booknest-muted);
-    font-size: 0.92rem;
-    cursor: pointer;
-}
-
-.booknest-filter-option input {
-    width: 17px;
-    height: 17px;
-    accent-color: var(--booknest-orange);
-}
-
-.booknest-filter-option:has(input:checked) {
-    color: var(--booknest-navy);
-    font-weight: 600;
-}
-.booknest-results-toolbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-    padding-bottom: 18px;
-    border-bottom: 1px solid var(--booknest-border);
-}
-
-.booknest-sort {
-    min-width: 160px;
-    border-radius: 10px;
-    border-color: var(--booknest-border);
-}
-
-@media (max-width: 575.98px) {
-    .booknest-results-toolbar {
-        align-items: flex-start;
-        flex-direction: column;
-    }
-
-    .booknest-sort {
-        width: 100%;
-    }
-}
 
 /* =========================================================
-   BOOK DETAIL
+   17. RESPONSIVE
    ========================================================= */
-
-.booknest-book-detail {
-    background: #fff;
-}
-
-.booknest-detail-poster {
-    overflow: hidden;
-    border-radius: 28px;
-    background: var(--booknest-cream);
-    box-shadow: 0 18px 45px rgba(16, 42, 67, 0.10);
-}
-
-.booknest-detail-poster-image {
-    display: block;
-    width: 100%;
-    height: 620px;
-    object-fit: cover;
-}
-
-.booknest-detail-poster-placeholder {
-    min-height: 620px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--booknest-cream);
-    color: #9fb3c8;
-    font-size: 7rem;
-}
-
-.booknest-detail-category,
-.booknest-detail-featured {
-    display: inline-flex;
-    align-items: center;
-    padding: 8px 14px;
-    border-radius: 50px;
-    font-size: 0.78rem;
-    font-weight: 700;
-    text-decoration: none;
-}
-
-.booknest-detail-category {
-    background: var(--booknest-orange-light);
-    color: var(--booknest-orange);
-}
-
-.booknest-detail-category:hover {
-    background: var(--booknest-orange);
-    color: #fff;
-}
-
-.booknest-detail-featured {
-    background: var(--booknest-yellow);
-    color: #8a6200;
-}
-
-.booknest-detail-title {
-    color: var(--booknest-navy);
-    font-size: clamp(2.4rem, 4vw, 4rem);
-    font-weight: 800;
-    line-height: 1.05;
-    letter-spacing: -1.5px;
-}
-
-.booknest-detail-author {
-    color: var(--booknest-muted);
-    font-size: 1rem;
-}
-
-.booknest-detail-author a {
-    color: var(--booknest-navy);
-}
-
-.booknest-detail-description {
-    color: var(--booknest-muted);
-    line-height: 1.8;
-    font-size: 1rem;
-}
-
-.booknest-detail-subtitle {
-    color: var(--booknest-navy);
-    font-weight: 800;
-}
-
-.booknest-format-section {
-    background: #f8fafc;
-    border: 1px solid var(--booknest-border);
-    border-radius: 24px;
-}
-
-.booknest-format-card {
-    background: #fff;
-    border: 1px solid var(--booknest-border);
-    border-radius: 18px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease,
-                border-color 0.2s ease;
-}
-
-.booknest-format-card:hover {
-    transform: translateY(-3px);
-    border-color: #f3c4a7;
-    box-shadow: 0 12px 28px rgba(16, 42, 67, 0.08);
-}
-
-.booknest-format-card .bi {
-    color: var(--booknest-orange);
-}
-
-.booknest-format-price {
-    color: var(--booknest-navy);
-    font-size: 1.35rem;
-    font-weight: 800;
-}
-
-.booknest-stock-available {
-    color: #3d8b50;
-}
-
-.booknest-stock-unavailable {
-    color: #c0392b;
-}
 
 @media (max-width: 991.98px) {
+
+    .booknest-search {
+        width: 100%;
+    }
+
+    .booknest-hero-content {
+        padding: 60px 0;
+    }
+
+    .booknest-hero-visual {
+        min-height: 380px;
+    }
+
+    .booknest-hero-placeholder {
+        min-height: 380px;
+    }
+
     .booknest-detail-poster-image {
         height: 520px;
     }
@@ -965,7 +1073,44 @@ a {
     }
 }
 
+
+@media (max-width: 767.98px) {
+
+    .booknest-category-hero-image {
+        height: 220px;
+    }
+}
+
+
 @media (max-width: 575.98px) {
+
+    .booknest-section {
+        padding: 55px 0;
+    }
+
+    .booknest-hero-title {
+        font-size: 3rem;
+    }
+
+    .booknest-hero-visual {
+        min-height: 300px;
+        border-radius: 28px;
+    }
+
+    .booknest-hero-placeholder {
+        min-height: 300px;
+        font-size: 5rem;
+    }
+
+    .booknest-results-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .booknest-sort {
+        width: 100%;
+    }
+
     .booknest-detail-poster {
         border-radius: 22px;
     }
@@ -987,72 +1132,3 @@ a {
         border-radius: 20px;
     }
 }
-/* =========================================================
-   CATEGORY DETAIL
-   ========================================================= */
-
-.booknest-category-hero-image {
-    height: 240px;
-    overflow: hidden;
-    border-radius: 24px;
-    background: var(--booknest-cream);
-    box-shadow: 0 12px 30px rgba(16, 42, 67, 0.08);
-}
-
-.booknest-category-hero-image img {
-    display: block;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.booknest-category-hero-image:hover img {
-    transform: scale(1.03);
-}
-
-@media (max-width: 767.98px) {
-    .booknest-category-hero-image {
-        height: 220px;
-    }
-}
-
-/* =========================================================
-   GLOBAL PAGE LAYOUT
-   ========================================================= */
-
-
-
-body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-.booknest-main {
-    flex: 1 0 auto;
-}
-
-.booknest-footer {
-    flex-shrink: 0;
-}
-.booknest-page-fill {
-    min-height: calc(100vh - 72px);
-}
-
-.booknest-breadcrumb .breadcrumb-item {
-    color: var(--booknest-muted);
-    font-size: 0.85rem;
-}
-
-.booknest-breadcrumb .breadcrumb-item a {
-    color: var(--booknest-navy);
-    text-decoration: none;
-}
-
-.booknest-breadcrumb .breadcrumb-item a:hover {
-    color: var(--booknest-orange);
-}
-
-.booknest-breadcrumb .breadcrumb-item.active {
-    color: var(--booknest-muted);
-}
-
