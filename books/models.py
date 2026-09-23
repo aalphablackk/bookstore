@@ -6,21 +6,10 @@ from django.db import models
 
 
 
-
 class Category(models.Model):
-    name = models.CharField(
-        max_length=100,
-        unique=True
-    )
-
-    slug = models.SlugField(
-        max_length=120,
-        unique=True
-    )
-
-    description = models.TextField(
-        blank=True
-    )
+    name = models.CharField(max_length=100, unique=True)
+    slug = models.SlugField(max_length=120, unique=True)
+    description = models.TextField(blank=True)
 
     image = models.ImageField(
         upload_to="categories/",
@@ -28,25 +17,41 @@ class Category(models.Model):
         null=True
     )
 
-    is_active = models.BooleanField(
-        default=True
+    image_url = models.URLField(
+        blank=True,
+        null=True
     )
 
-    created_at = models.DateTimeField(
-        auto_now_add=True
-    )
+    is_active = models.BooleanField(default=True)
 
-    updated_at = models.DateTimeField(
-        auto_now=True
-    )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ["name"]
         verbose_name_plural = "Categories"
 
+    def clean(self):
+        super().clean()
+
+        if self.image and self.image_url:
+            raise ValidationError(
+                "A category image must be either an uploaded image "
+                "or an image URL, not both."
+            )
+
+    @property
+    def image_source(self):
+        if self.image:
+            return self.image.url
+
+        if self.image_url:
+            return self.image_url
+
+        return None
+
     def __str__(self):
         return self.name
-
 
 class Author(models.Model):
     name = models.CharField(

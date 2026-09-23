@@ -15,15 +15,25 @@
         <!-- Category header -->
         <div class="row align-items-center g-4 mb-5">
 
-            {% if category.image %}
+            {% if category.image or category.image_url %}
                 <div class="col-12 col-md-4 col-lg-3">
 
                     <div class="booknest-category-hero-image">
-                        <img
-                            src="{{ category.image.url }}"
-                            alt="{{ category.name }}"
-                            class="w-100 h-100"
-                        >
+
+                        {% if category.image %}
+                            <img
+                                src="{{ category.image.url }}"
+                                alt="{{ category.name }}"
+                                class="w-100 h-100"
+                            >
+                        {% elif category.image_url %}
+                            <img
+                                src="{{ category.image_url }}"
+                                alt="{{ category.name }}"
+                                class="w-100 h-100"
+                            >
+                        {% endif %}
+
                     </div>
 
                 </div>

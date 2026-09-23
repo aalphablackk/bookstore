@@ -16,9 +16,15 @@ from .models import (
 class CategoryAdmin(admin.ModelAdmin):
     list_display = (
         "name",
+        "slug",
+        "image_status",
         "is_active",
         "created_at",
-        "updated_at",
+    )
+
+    list_filter = (
+        "is_active",
+        "created_at",
     )
 
     search_fields = (
@@ -26,13 +32,60 @@ class CategoryAdmin(admin.ModelAdmin):
         "description",
     )
 
-    list_filter = (
-        "is_active",
-    )
-
     prepopulated_fields = {
         "slug": ("name",),
     }
+
+    readonly_fields = (
+        "created_at",
+        "updated_at",
+    )
+
+    fieldsets = (
+        (
+            "Basic Information",
+            {
+                "fields": (
+                    "name",
+                    "slug",
+                    "description",
+                    "is_active",
+                )
+            },
+        ),
+        (
+            "Category Image",
+            {
+                "description": (
+                    "Provide either an uploaded image or an image URL. "
+                    "Do not provide both."
+                ),
+                "fields": (
+                    "image",
+                    "image_url",
+                ),
+            },
+        ),
+        (
+            "Timestamps",
+            {
+                "fields": (
+                    "created_at",
+                    "updated_at",
+                ),
+            },
+        ),
+    )
+
+    @admin.display(description="Image")
+    def image_status(self, obj):
+        if obj.image:
+            return "Uploaded image"
+
+        if obj.image_url:
+            return "Image URL"
+
+        return "No image"
 
 
 @admin.register(Author)

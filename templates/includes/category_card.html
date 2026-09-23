@@ -7,19 +7,21 @@
         <div class="category-card-image">
 
             {% if category.image %}
-
                 <img
                     src="{{ category.image.url }}"
                     alt="{{ category.name }}"
                     loading="lazy"
                 >
-
+            {% elif category.image_url %}
+                <img
+                    src="{{ category.image_url }}"
+                    alt="{{ category.name }}"
+                    loading="lazy"
+                >
             {% else %}
-
                 <div class="category-card-placeholder">
                     <i class="bi bi-book"></i>
                 </div>
-
             {% endif %}
 
         </div>

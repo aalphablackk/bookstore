@@ -8,3 +8,4 @@ staticfiles/
 .vscode/
 .idea/
 Structure.md
+seed_data.py
