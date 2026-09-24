@@ -9,3 +9,4 @@ staticfiles/
 .idea/
 Structure.md
 seed_data.py
+data.json
